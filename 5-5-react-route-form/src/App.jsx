@@ -38,12 +38,13 @@
 // Goal: Add routing for three pages: Home, About, Registration
 //
 // 1) Import router primitives from react-router-dom
-//    HINT: import { Routes, Route, NavLink } from "react-router-dom";
-//
+//    HINT:
+import { Routes, Route, NavLink } from "react-router-dom";
 // 2) Import your three page components
-//    HINT: import Home from "./pages/Home";
-//          import About from "./pages/About";
-//          import Registration from "./pages/Registration";
+//    HINT:
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Registration from "./pages/Registration";
 //
 // 3) Add a simple navbar with NavLink items for "/", "/about", "/registration" inside the <div className="links">.
 //    HINT: <NavLink to="/" end className="navlink">PAGE_NAME</NavLink>
@@ -144,19 +145,34 @@
 // - Use the hints above to guide your implementation, but write the actual JSX and logic yourself.
 // ================================================================
 
-
 export default function App() {
   return (
     <div className="app">
       <nav className="navbar">
         <div className="brand">🧑‍💻 Student Portal</div>
         <div className="links">
-          {/*Nav links*/}
+          <NavLink to="/" className="navlink">
+            Home
+          </NavLink>
+          ;
+          <NavLink to="/about" className="navlink">
+            About
+          </NavLink>
+          ;
+          <NavLink to="/registration" className="navlink">
+            Registration
+          </NavLink>
+          ;
         </div>
       </nav>
 
       <main className="container">
-        {/*Routes*/}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="*" element={<h2>404 — Not Found</h2>} />
+        </Routes>
       </main>
 
       <footer className="footer">
